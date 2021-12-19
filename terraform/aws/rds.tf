@@ -1,6 +1,6 @@
 resource "aws_rds_cluster" "fail" {
   allocated_storage       = 10
-  backup_retention_period = 0
+  backup_retention_period = "25"
 }
 
 resource "aws_rds_cluster" "pass1" {

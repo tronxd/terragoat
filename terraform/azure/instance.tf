@@ -29,6 +29,7 @@ resource azurerm_linux_virtual_machine "linux_machine" {
   tags = {
     terragoat   = true
     environment = var.environment
+    yor_trace   = "aec9e894-39c5-4304-b5f7-fa41f70c3586"
   }
 }
 
@@ -55,5 +56,6 @@ resource azurerm_windows_virtual_machine "windows_machine" {
   tags = {
     terragoat   = true
     environment = var.environment
+    yor_trace   = "d0555140-033c-4ea8-bee7-35f5be18f8e1"
   }
 }

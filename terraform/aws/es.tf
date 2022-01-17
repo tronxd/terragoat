@@ -14,6 +14,9 @@ resource "aws_elasticsearch_domain" "monitoring-framework" {
     ebs_enabled = true
     volume_size = 30
   }
+  tags = {
+    yor_trace = "f80b46b0-e235-4921-96f4-cdb7b397610d"
+  }
 }
 
 data aws_iam_policy_document "policy" {

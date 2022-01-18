@@ -3,7 +3,8 @@ resource aws_ecr_repository "repository" {
   image_tag_mutability = "MUTABLE"
 
   tags = {
-    Name = "${local.resource_prefix.value}-repository"
+    Name      = "${local.resource_prefix.value}-repository"
+    yor_trace = "1dbda739-b7e1-435e-b77d-bf49618a442b"
   }
 }
 

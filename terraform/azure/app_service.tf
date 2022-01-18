@@ -7,6 +7,9 @@ resource azurerm_app_service_plan "example" {
     tier = "Dynamic"
     size = "S1"
   }
+  tags = {
+    yor_trace = "8d3c6bf3-5330-4397-a46a-77b4a1a1dab5"
+  }
 }
 
 resource azurerm_app_service "app-service1" {
@@ -17,6 +20,9 @@ resource azurerm_app_service "app-service1" {
   https_only          = false
   site_config {
     min_tls_version = "1.1"
+  }
+  tags = {
+    yor_trace = "18a64170-a8c1-4b50-96a2-07b113fccf12"
   }
 }
 
@@ -29,6 +35,9 @@ resource azurerm_app_service "app-service2" {
 
   auth_settings {
     enabled = false
+  }
+  tags = {
+    yor_trace = "2fbc9c61-3c1b-41f5-af5e-fdf5c1d70838"
   }
 }
 

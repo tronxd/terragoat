@@ -12,7 +12,8 @@ module "vpc" {
   enable_vpn_gateway = true
 
   tags = {
-    Terraform = "true"
+    Terraform   = "true"
     Environment = "dev"
+    yor_trace   = "8fc3435d-679e-4592-9998-d4652aae8f4d"
   }
 }

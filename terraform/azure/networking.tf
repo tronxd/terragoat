@@ -3,6 +3,9 @@ resource "azurerm_virtual_network" "example" {
   address_space       = ["10.0.0.0/16"]
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
+  tags = {
+    yor_trace = "3d6bee9e-618b-4cde-ace9-c212e3b188d0"
+  }
 }
 
 resource "azurerm_subnet" "example" {
@@ -22,6 +25,9 @@ resource "azurerm_network_interface" "ni_linux" {
     subnet_id                     = azurerm_subnet.example.id
     private_ip_address_allocation = "Dynamic"
   }
+  tags = {
+    yor_trace = "e72e7976-e613-4359-a211-a5c909a56cae"
+  }
 }
 
 resource "azurerm_network_interface" "ni_win" {
@@ -34,6 +40,9 @@ resource "azurerm_network_interface" "ni_win" {
     subnet_id                     = azurerm_subnet.example.id
     private_ip_address_allocation = "Dynamic"
   }
+  tags = {
+    yor_trace = "445f5fc6-b394-40ad-a7b8-151b2d3f6c9c"
+  }
 }
 
 resource azurerm_network_security_group "bad_sg" {
@@ -42,27 +51,30 @@ resource azurerm_network_security_group "bad_sg" {
   resource_group_name = azurerm_resource_group.example.name
 
   security_rule {
-    access                 = "Allow"
-    direction              = "Inbound"
-    name                   = "AllowSSH"
-    priority               = 200
-    protocol               = "TCP"
-    source_address_prefix  = "*"
-    source_port_range      = "*"
-    destination_port_range = "22-22"
+    access                     = "Allow"
+    direction                  = "Inbound"
+    name                       = "AllowSSH"
+    priority                   = 200
+    protocol                   = "TCP"
+    source_address_prefix      = "*"
+    source_port_range          = "*"
+    destination_port_range     = "22-22"
     destination_address_prefix = "*"
   }
 
   security_rule {
-    access                 = "Allow"
-    direction              = "Inbound"
-    name                   = "AllowRDP"
-    priority               = 300
-    protocol               = "TCP"
-    source_address_prefix  = "*"
-    source_port_range      = "*"
-    destination_port_range = "3389-3389"
+    access                     = "Allow"
+    direction                  = "Inbound"
+    name                       = "AllowRDP"
+    priority                   = 300
+    protocol                   = "TCP"
+    source_address_prefix      = "*"
+    source_port_range          = "*"
+    destination_port_range     = "3389-3389"
     destination_address_prefix = "*"
+  }
+  tags = {
+    yor_trace = "f0c54a2e-d431-49f4-80ed-17eb2c736a49"
   }
 }
 
@@ -70,6 +82,9 @@ resource azurerm_network_watcher "network_watcher" {
   location            = var.location
   name                = "terragoat-network-watcher-${var.environment}"
   resource_group_name = azurerm_resource_group.example.name
+  tags = {
+    yor_trace = "4915aae3-1ec9-4b14-b11a-3e4934424f6e"
+  }
 }
 
 resource azurerm_network_watcher_flow_log "flow_log" {
@@ -81,5 +96,8 @@ resource azurerm_network_watcher_flow_log "flow_log" {
   retention_policy {
     enabled = false
     days    = 10
+  }
+  tags = {
+    yor_trace = "a157c064-f6d6-441d-844c-fb6911d54a29"
   }
 }

@@ -26,6 +26,7 @@ resource "aws_elb" "weblb" {
   connection_draining_timeout = 400
 
   tags = {
-    Name = "foobar-terraform-elb"
+    Name      = "foobar-terraform-elb"
+    yor_trace = "1c87e080-2f88-4139-a165-60e4fb6d3549"
   }
 }

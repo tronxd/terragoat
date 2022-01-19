@@ -21,8 +21,14 @@ resource google_compute_instance "server" {
     enable-oslogin         = false
     serial-port-enable     = true
   }
+  labels = {
+    yor_trace = "0f82e3d8-e78d-4ac7-aeb9-23f1e882103e"
+  }
 }
 
 resource google_compute_disk "unencrypted_disk" {
   name = "terragoat-${var.environment}-disk"
+  labels = {
+    yor_trace = "581c7ae4-9391-43f9-b645-7aeb5f676131"
+  }
 }

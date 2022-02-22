@@ -12,11 +12,10 @@ resource google_compute_instance "server" {
   }
   network_interface {
     subnetwork = google_compute_subnetwork.public-subnetwork.name
-    access_config {}
   }
-  can_ip_forward = true
 
   metadata = {
+    block-project-ssh-keys = true
     block-project-ssh-keys = false
     enable-oslogin         = false
     serial-port-enable     = true

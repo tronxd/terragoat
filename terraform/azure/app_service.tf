@@ -14,9 +14,24 @@ resource azurerm_app_service "app-service1" {
   location            = var.location
   name                = "terragoat-app-service-${var.environment}${random_integer.rnd_int.result}"
   resource_group_name = azurerm_resource_group.example.name
-  https_only          = false
+  https_only          = true
   site_config {
-    min_tls_version = "1.1"
+    dotnet_framework_version = "v6.0"
+    ftps_state = "Disabled"
+    http2_enabled = true
+    min_tls_version = "1.2"
+  }
+  identity = true
+  client_cert_enabled = true
+  logs {
+    detailed_error_messages_enabled = true
+    failed_request_tracing_enabled = true
+  }
+  auth_settings {
+    enabled = true
+  }
+  storage_account {
+    type = "AzureFiles"
   }
 }
 
@@ -28,7 +43,21 @@ resource azurerm_app_service "app-service2" {
   https_only          = true
 
   auth_settings {
-    enabled = false
+    enabled = true
+  }
+  identity = true
+  client_cert_enabled = true
+  storage_account {
+    type = "AzureFiles"
+  }
+  site_config {
+    dotnet_framework_version = "v6.0"
+    ftps_state = "Disabled"
+    http2_enabled = true
+  }
+  logs {
+    detailed_error_messages_enabled = true
+    failed_request_tracing_enabled = true
   }
 }
 
